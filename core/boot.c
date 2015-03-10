@@ -5,27 +5,19 @@
 main(){
 	asm volatile (
 		//assembly template
-		"
-			
-		"
+		""
 		:
 		
 		//ouput operands
-		"
-			
-		"
+		""
 		:
 		
 		//input operands
-		"
-			
-		"
+		""
 		:
 		
 		//clobbers
-		"
-			
-		"
+		""
 		
-	)
+	);
 }
