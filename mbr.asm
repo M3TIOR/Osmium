@@ -14,6 +14,10 @@ boot:			;displays ! to the screen.
 
 	int 0x10
 	jmp $
+	
+;NOTE:
+;	this litte section at the end here needs to be at the very end of the mbr to make it bootable.
+;	MAKE SURE THE OUTPUT BINARY IS EXACTLY 512 BYTES!
 
 times 510-($-$$) db 0
 
