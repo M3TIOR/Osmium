@@ -1,0 +1,11 @@
+M3TIOR 2015
+
+March,3 2015:
+	Project begins. Mbr loaded and tested
+	
+	Proposed new Idea, no global partitioning table, instead, A filesystem capable of supporting
+	subsystems. Reducing the yeald of a mbr and increasing the efficiency of disk space.
+	
+	I should probably log that to AstroFS card on trello...
+
+
