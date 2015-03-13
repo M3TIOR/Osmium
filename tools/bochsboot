@@ -1,0 +1,12 @@
+#!/bin/sh
+
+#this file needs to be able to autotonamously boot bochs after
+#compiling a new binary when one doesn't exist.
+
+#when one does, the user needs to decide whether or not to load the old binary or
+#compile a new one.
+
+#we need to load the kernel into the floppy generated to fit it, then load the floppy into
+#our loop device.
+
+#once that's all done load bochs with specified boot device.
