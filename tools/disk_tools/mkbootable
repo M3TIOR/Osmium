@@ -1,5 +1,7 @@
 #!/bin/sh
 
+output="/tmp/Osmium_src/disk.img"
+
 depcheck(){
 	if [ -e "/usr/bin/nasm" ]; then
 		echo "nasm found: running init..."
@@ -27,6 +29,10 @@ init(){
 
 depcheck
 init
+
+if [ $1 != "" ];do
+	output="$1";
+fi
 
 sudo dd ibs=2 obs=1 seek=510 count=1 if=/tmp/Osmium_src/bootmark.bin of=$1
 

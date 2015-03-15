@@ -1,0 +1,61 @@
+#!/bin/sh
+
+#basically this is a clone of mkbootable with a few changes...
+
+#since the size of our function is two bytes we need to make room for two
+#bytes 511 and 512 are taken by the bootable lable.
+byte="509"
+output="/tmp/Osmium_src/disk.img"
+
+__help(){
+	echo "Usage:"
+	echo "	-o <out>	<< output file, defaults to /tmp/Osmium_src/disk.img"
+	echo "	-b <byte>	<< start byte location, defaults to 509"
+	echo "	-h         	<< prints this message"
+}
+
+depcheck(){
+	if [ -e "/usr/bin/nasm" ]; then
+		echo "nasm found: running init..."
+	else
+		echo "nasm not installed. Exiting..."
+		exit 0;
+	fi
+}
+
+init(){
+	if [ -e "/tmp/Osmium_src/halt.bin" ]; then
+		echo "Program failed to exit correctly in last instance."
+		echo "Recompiling binary..."
+		rm -rf /tmp/Osmium_src/halt.bin
+		mkdir /tmp/Osmium_src
+		nasm -o /tmp/Osmium_src/halt.bin ./../sources/ramhalt.asm
+		echo "Success"
+	else
+		mkdir /tmp/Osmium_src
+		echo "Compiling binary..."
+		nasm -o /tmp/Osmium_src/halt.bin ./../sources/ramhalt.asm
+		echo "Success"
+	fi
+}
+
+parse_input(){
+	while [ $1 != "" ]; do
+		case $1 in
+			-b )shift;if [ $1 != "" ] then set byte=$1 fi;shift;;
+			-o )shift;if [ $1 != "" ] then set output=$1 fi;shift;;
+			-h )__help;exit 0;;
+			*)__help;exit 0;;
+		esac
+	done
+}
+
+parse_input
+depcheck
+init
+
+sudo dd ibs=2 obs=1 seek=$byte count=1 if=/tmp/Osmium_src/halt.bin of=$output
+
+rm -rf /tmp/Osmium_src/halt.bin
+
+exit 0
