@@ -1,0 +1,138 @@
+#!/bin/sh
+
+#ripoff of eax extended register >> ax used for storing return values in c code.
+#I'm using it to do the exact same thing here. 
+eax=""
+workdir="/tmp/Osmium_src/disktool/"
+diskdir="/tmp/Osmium_src/disktool/disks/"
+bindir="/tmp/Osmium_src/disktool/binaries/"
+
+#dd vars
+blocksize="1"
+blockcount="1"
+readfrom="0"
+writefrom="0"
+target=""
+
+
+_init_(){
+	if [ -e "/tmp/Osmium_src" ] && [ -d "/tmp/Osmium_src" ];then
+		mkdir "/tmp/Osmium_src"
+	else
+		#just incase...
+		rm -rf "/tmp/Osmium_src"
+		mkdir "/tmp/Osmium_src"
+	fi
+	#because another script could have generated the Osmium_src directory already.
+	if [ -d "/tmp/Osmium_src" ];then
+		
+	fi
+	
+	#depcheck
+	if [ -e "/bin/dd" ] || [ -e "/usr/bin/dd" ];then
+		echo "Running init..."
+	else
+		echo "The program dependency for this script 'dd' is not installed."
+		echo "Please install this dependency to continue. Exiting..."
+		exit
+	fi
+	
+	
+	if [ -e "/tmp/Osmium_src/disktool/disk.img" ];then
+		while true; do
+			echo "oops... someone made a default disk and shoved it in the temporary folder!"
+			echo "would you like me to remove that for you?"
+			read yn
+			case $yn in
+				[Yy]*)rm "/tmp/Osmimum_src/disktool/disk.img";break;;
+				[Nn]*)break;;
+				*)echo "I'm not sure I heard that clearly... WAT!? [Yy] [Nn]";;
+			esac
+		done
+	fi
+}
+
+#for generating new disks.
+new(){
+	if [ $1 != "" ];then
+		while [ $1 != "" ]; do
+			case $1 in
+				-n)target=$1;;#name
+				-s)size=$1;;#size
+				-h)
+					#program help
+					echo ""
+					return 0
+				;;
+				*)$2="-h";;
+			esac
+			shift
+		done
+	else
+		new -h
+	fi
+}
+
+#lists specified information.
+list(){
+	if [ $1 != "" ];then
+		while [ $1 != "" ]; do
+			case $1 in
+				-d)dir $diskdir;return 0;;#name
+				-b)dir $bindir;return 0;;#size
+				-h)
+					#program help
+					echo ""
+					return 0
+				;;
+				*)$2="-h";;
+			esac
+			shift
+		done
+	else
+		dir $diskdir;
+		dir $bindir;
+	fi
+}
+
+#for fuzing disks together...
+fusion(){
+	
+}
+
+#for sepperating disks...
+fision(){
+	
+}
+
+#prints and returns the size of a specified binary or disk.
+sizeof(){
+	
+}
+
+#pops up a dialogue menu for the user to add a binary in the work directory to the target disk.
+add(){
+	
+}
+
+#pops up a dialogue menu for the user to remove some bytecode of the target disk and replace it with zeros.
+remove(){
+	
+}
+
+#moves a file in the work directory to a specified directory
+export(){
+	
+}
+
+#moves a specified file into the work directory.
+import(){
+	
+}
+
+#in charge of all command calls.
+commands(){
+	
+}
+
+#eof
