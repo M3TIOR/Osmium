@@ -17,6 +17,7 @@ target=""
 
 _init_(){
 	exec ./tmpcheck
+	mkdir "/tmp/Osmium_src"
 	#because another script could have generated the Osmium_src directory already.
 	
 	open=1;

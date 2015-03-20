@@ -18,3 +18,9 @@ March,14 2015:
 	I figured I should make my job easier before I begin the project
 	so I don't have to do it later. Plus if any of you wonderful people
 	need the tools they're here for yeh.
+
+March,19 2015:
+	Ok, so there's a thing that I just had to learn...
+	I'm going to have to target x86 systems and above!
+	Weeeeeeew right!.... no, I fucking hate it...
+	because now I can't keep the promise of the project...
