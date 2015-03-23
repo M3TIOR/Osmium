@@ -1,20 +1,10 @@
-%comment
-	;below is the multiboot code for integration with grub
-	;
-	;it should include the standard calls for the standard bootloader.
-%endcomment
-
 MBOOT_PAGE_ALIGN    equ 1<<0    ; Load kernel and modules on a page boundary
 MBOOT_MEM_INFO      equ 1<<1    ; Provide your kernel with memory info
 MBOOT_HEADER_MAGIC  equ 0x1BADB002 ; Multiboot Magic value
 MBOOT_HEADER_FLAGS  equ MBOOT_PAGE_ALIGN | MBOOT_MEM_INFO
 MBOOT_CHECKSUM      equ -(MBOOT_HEADER_MAGIC + MBOOT_HEADER_FLAGS)
 
-;some of this is copied directly from http://www.jamesmolloy.co.uk tutorial_html/2.-Genesis.html
-;because even though copyright and shtuff. some code is already optimized to the point of pure op-ness
-;and besides. the most of what I'm copying in this is the multiboot headers for grub...
-
-[BITS 32]                       ; All instructions should be 32-bit.
+[BITS 64]                       ; All instructions should be 16-bit.
 
 [GLOBAL mboot]                  ; Make 'mboot' accessible from C.
 [EXTERN code]                   ; Start of the '.text' section.
@@ -37,7 +27,7 @@ multi_boot:
 [EXTERN main]                   ; This is the entry point of our C code
 
 start:
-  push    ebx                   ; Load multiboot header location
+  push    rbx                   ; Load multiboot header location
 
   ; Execute the kernel:
   cli				; Disable interrupts.

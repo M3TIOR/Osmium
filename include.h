@@ -14,4 +14,4 @@ typedef unsigned short	 u16int;
 typedef unsigned int	 u32int;
 typedef unsigned long	 u16int;
 
-typedef char* string;
+typedef const char* string; //because "" strings are string-constants...
