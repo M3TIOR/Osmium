@@ -14,6 +14,17 @@
 .equ MBOOT_HEADER_FLAGS, MBOOT_PAGE_ALIGN | MBOOT_MEM_INFO
 .equ MBOOT_CHECKSUM, -(MBOOT_HEADER_MAGIC + MBOOT_HEADER_FLAGS)
 
+mboot:
+        .int MBOOT_HEADER_MAGIC
+        .int MBOOT_HEADER_FLAGS
+        .int MBOOT_CHECKSUM
+
+        .int mboot
+        .int code
+        .int bss
+        .int end
+        .int start
+
 start:
         push %ebx
 
