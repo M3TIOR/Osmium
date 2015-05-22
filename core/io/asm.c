@@ -1,6 +1,6 @@
 // M3TIOR 2015
 
-#include "memory.h"
+#include <Osmium/asm.h>
 
 void outb(unsigned short port, unsigned char value){
     asm volatile ("outb %1, %0" : : "dN" (port), "a" (value));
@@ -17,4 +17,3 @@ unsigned short inw(unsigned short port){
    asm volatile ("inw %1, %0" : "=a" (ret) : "dN" (port));
    return ret;
 }
-

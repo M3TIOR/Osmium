@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #ripoff of eax extended register >> ax used for storing return values in c code.
-#I'm using it to do the exact same thing here. 
+#I'm using it to do the exact same thing here.
 eax=""
 workdir="/tmp/Osmium_src/disktool/"
 diskdir="/tmp/Osmium_src/disktool/disks/"
@@ -19,7 +19,7 @@ _init_(){
 	exec ./tmpcheck
 	mkdir "/tmp/Osmium_src"
 	#because another script could have generated the Osmium_src directory already.
-	
+
 	open=1;
 	if [ -e $workdir ] && [ -d $workdir ];then
 		#this is all to make sure we don't already have one of these scripts running.
@@ -48,9 +48,9 @@ _init_(){
 		echo "Please install this dependency to continue. Exiting..."
 		exit
 	fi
-	
+
 	#NOTE TO SELF: MOVE THE DEPCHECK TO THE TOP OF THE INIT!
-	
+
 	#and now we label the program as active.
 	mkdir "/tmp/Osmium_src/disktool"
 	echo $$ > "/tmp/Osmium_src/disktool.pid"
@@ -112,50 +112,50 @@ fusion(){
 	if [ $1 != "" ];then
 		while [ $1 != "" ]; do
 			case $1 in
-				#so I'm not sure what do do about this...
-				
+				#so I\'m not sure what do do about this...
+
 				*)$2="-h";;
 			esac
 			shift
 		done
 	else
-	
+
 	fi
 }
 
 #for sepperating disks...
 fision(){
-	
+
 }
 
 #prints and returns the size of a specified binary or disk.
 sizeof(){
-	
+
 }
 
 #pops up a dialogue menu for the user to add a binary in the work directory to the target disk.
 add(){
-	
+
 }
 
 #pops up a dialogue menu for the user to remove some bytecode of the target disk and replace it with zeros.
 remove(){
-	
+
 }
 
 #moves a file in the work directory to a specified directory
 export(){
-	
+
 }
 
 #moves a specified file into the work directory.
 import(){
-	
+
 }
 
 #in charge of all command calls.
 commands(){
-	
+
 }
 
 #eof

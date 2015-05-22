@@ -1,5 +1,0 @@
-just to remind myself here.
-
-module formatting needs opcodes that the core can use as guidelines as what a module can do and how to interface with it.
-
-suggestion! use block formated data at the head of each module that the core can access and work with.
