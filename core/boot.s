@@ -1,8 +1,9 @@
 /* gas version of C kernel bootleg */
 
 .file "boot.c"
-.globl start
-.globl mboot
+.global _start
+.global start
+.global mboot
 .extern code
 .extern bss
 .extern end
@@ -13,6 +14,8 @@
 
 .equ MBOOT_HEADER_FLAGS, MBOOT_PAGE_ALIGN | MBOOT_MEM_INFO
 .equ MBOOT_CHECKSUM, -(MBOOT_HEADER_MAGIC + MBOOT_HEADER_FLAGS)
+
+_start: #start of gnu assembly instructions... took me forever to learn this...
 
 mboot:
         .int MBOOT_HEADER_MAGIC
@@ -26,10 +29,10 @@ mboot:
         .int start
 
 start:
-        push %ebx
+	push %ebx
 
-        xorl %esp, %esp
-        xorl %ebp, %ebp
+        xor %esp, %esp
+        xor %ebp, %ebp
         /* reset control registers for debug reasons. */
 
         cli
